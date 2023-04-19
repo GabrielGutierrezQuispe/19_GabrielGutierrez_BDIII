@@ -13,7 +13,7 @@ GO
 /* Crear tabla client */
 CREATE TABLE client
 (
-	id int PRIMARY KEY,
+	id int ,
 	type_document char(3),
 	number_document char(15),
 	names varchar(60),
@@ -22,27 +22,7 @@ CREATE TABLE client
 	cell_phone char(9),
 	birthdate date,
 	active bit
-)
-GO
-
-/* Crear tabla sale */
-CREATE TABLE sale
-(
-	id int PRIMARY KEY,
-	date_time datetime,
-	seller_id int,
-	client_id int,
-	active bit
-)
-GO
-
-/* Crear tabla sale_detail */
-CREATE TABLE sale_detail
-(
-	id int PRIMARY KEY,
-	sale_id int,
-	clothes_id int,
-	amount int
+	CONSTRAINT client_pk PRIMARY KEY (id)
 )
 GO
 
@@ -58,6 +38,7 @@ CREATE TABLE seller
 	cell_phone char(9),
 	email varchar(80),
 	active bit
+	CONSTRAINT seller_pk PRIMARY KEY (id)
 )
 GO
 
@@ -71,6 +52,30 @@ CREATE TABLE clothes
 	size varchar(10),
 	price decimal(8,2),
 	active bit
+	CONSTRAINT clothes_pk PRIMARY KEY (id)
+)
+GO
+
+/* Crear tabla sale */
+CREATE TABLE sale
+(
+	id int,
+	date_time datetime,
+	seller_id int,
+	client_id int,
+	active bit
+	CONSTRAINT sale_pk PRIMARY KEY (id)
+)
+GO
+
+/* Crear tabla sale_detail */
+CREATE TABLE sale_detail
+(
+	id int PRIMARY KEY,
+	sale_id int,
+	clothes_id int,
+	amount int
+	CONSTRAINT sale_detail_pk PRIMARY KEY (id)
 )
 GO
 
